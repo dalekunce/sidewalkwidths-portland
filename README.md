@@ -30,4 +30,4 @@ This repo contains the notebooks to reproduce this work, as well as the finished
 
 ## Acknowledgements
 
-This repo is adapted from Meli Harvey's original work. The Toronto dataset was also created with python debugging and cloud processing help from Jennings Anderson, as well as input from Raphael Dumas at the City of Toronto. Thanks!
+This repo is adapted from [Meli Harvey](https://github.com/meliharvey/)'s original work. The Toronto dataset was created with python debugging and cloud processing help from [Jennings Anderson](https://github.com/jenningsanderson), as well as input from [Raphael Dumas](https://github.com/radumas) at the City of Toronto. Thanks!
