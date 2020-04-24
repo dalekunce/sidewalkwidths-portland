@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Sidewalk Widths NYC</title>
+<title>Sidewalk Widths Toronto</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel='icon' href='favicon.ico?' type='image/x-icon'/ >
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
 
@@ -29,7 +30,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 30px;
-    color: #a6c1d2;
+    color: #c9d3d9;
     background-color: #0b0d13;
     z-index: 1000;
     border-radius: 20px;
@@ -57,10 +58,10 @@
   }
   #info-button button {
     padding: 0.5em;
-    color: #cfedff;
+    color: #c9d3d9;
     font-size: 1.25em;
     font-weight: bold;
-    background-color: #1b3e6f;
+    background-color: #2f5994;
     outline: 0;
     border: 0;
     border-radius: 10px;
@@ -71,7 +72,7 @@
   }
   #open-info {
     position: fixed;
-    background-color: #1b3e6f;
+    background-color: #2f5994;
     margin-left: 10px;
     margin-top: 10px;
     width: 40px;
@@ -109,7 +110,7 @@
 	  text-decoration: underline;
 	}
 	.mapboxgl-ctrl-group {
-    background: #1b3e6f;
+    background: #2f5994;
 	}
 	.mapboxgl-ctrl-group button+button {
     border-top: 1px solid #000;
@@ -160,9 +161,14 @@
   <div id="info">
     <div id="info-content">
       <h3>Welcome to</h3>
-      <h1>Sidewalk Widths NYC</h1>
-      <p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Widths were determined from <a href="https://data.cityofnewyork.us/City-Government/Sidewalk/vfx9-tbb6">New York City's Sidewalk dataset</a> which was not verfied for accuracy or completeness.</p>
-			<p>To learn more about how this dataset was produced, visit the <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p>
+      <h1>Sidewalk Widths Toronto</h1>
+			<p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Widths were determined from the <a href="https://open.toronto.ca/dataset/topographic-mapping-physical-area-of-sidewalks/">City of Toronto's open sidewalk data</a>. This source data was not verfied for accuracy or completeness. The sidewalk data also does not include off-street trails and multi-use paths, which may offer additional routes for pedestrians.</p>
+			<p>This site borrows <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">methods and code</a> from Meli Harvey's <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC project</a>, adapted to Toronto's context. To learn more about how this dataset was produced, visit the <a href="https://www.github.com/sharedstreets/sidewalkwidth-toronto">Sidewalk Widths Toronto GitHub page</a>.</p>
+
+			<!-- <p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Sidewalk width information was provided by the <a href="https://www.oaklandca.gov/topics/sidewalks">City of Oakland</a>, using its most recent (2006) sidewalk inventory. This source data was not verfied for accuracy or completeness. This map is based on <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc"></a>Meli Harvey's <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC project</a> and associated <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">source code.</a></p> -->
+			<!-- <p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Widths were determined from the <a href="https://data.drcog.org/dataset/sidewalk-polygons-2018">Denver Regional Council of Government (DRCOG)'s 2018 Regional Planimetric Data Project</a>. This source data was not verfied for accuracy or completeness. This site borrows <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">methods and code</a> from Meli Harvey's <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC project</a></p>
+			<p>To learn more about how this dataset was produced, visit the <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p> -->
+			<p></p>
       <p><small>DISCLAIMER<br>
       Do not use this map to make decisions that impact your health or safety. Other important factors like sidewalk obstructions and pedestrian activity are not accounted for in this dataset.</small></p>
     </div>
@@ -197,17 +203,17 @@
     }
   }
 
-	mapboxgl.accessToken = 'pk.eyJ1IjoiZGNoYXJ2ZXkiLCJhIjoiY2s5N3Zjc3ZxMGYwazNlbm9ubzA1d3Q1dCJ9.szxUl4AKCdUNLlmvham6og';
+	mapboxgl.accessToken = 'pk.eyJ1IjoidHJhbnNwb3J0cGFydG5lcnNoaXAiLCJhIjoiY2s5ZW9kZnR5MDJpNjNtcDRzaDRoaW5vdyJ9.88UoaHJBnCDoIqT05XsJvA';
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/dcharvey/ck90r78ib0hnp1jnz9bwleg7h',
-    center: [-74.005, 40.714],
+		style: 'mapbox://styles/transportpartnership/ck9eobamu2ojb1io1yppz1uhn',
+		center: [-79.393, 43.651],
     zoom: 13,
   	maxZoom: 22,
-  	minZoom: 13,
+  	minZoom: 12,
 		maxBounds: [
-			[-74.33, 40.41], // Southwest coordinates
-			[-73.63, 40.98] // Northeast coordinates
+			[-79.689, 43.451], // Southwest coordinates
+			[-79.089, 43.851] // Northeast coordinates
 		],
 		hash: true
   });
@@ -226,44 +232,52 @@
       }
     }
 
-		// map.addSource('sidewalks', {
-		//    type: 'geojson',
-		//    data: './sidewalkwidths_nyc.geojson'
-		// });
-
 		map.addSource('sidewalks', {
 			 type: 'vector',
-			 url: 'mapbox://dcharvey.1typxzdb'
+			 url: 'mapbox://transportpartnership.avtbz3wy'
 		});
 
     map.addLayer({
       'id': 'sidewalks',
       'type': 'line',
       'source': 'sidewalks',
-			'source-layer': 'sidewalkwidths_nyc-87ugfr',
+			'source-layer': 'sidewalkwidths_toronto-cthez3',
       'layout': {
         'line-cap': 'round',
       },
-      'paint': {
-        'line-width': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          14, 1,
-          19, 10,
-        ],
-        'line-color': [
-          'interpolate',
-          ['linear'],
-          ['get', 'width'],
-          0, '#d7191c',
-          6, '#d7191c',
-          12, '#bab849',
-          18, '#03fc7b',
-          24, '#03a1fc'
-        ],
-        'line-opacity': 1,
-      },
+			"paint": {
+					"line-color": [
+							"step",
+							["get", "width"],
+							"hsl(0, 85%, 40%)",
+							6,
+							"hsl(31, 87%, 45%)",
+							9,
+							"hsl(55, 80%, 56%)",
+							12,
+							"hsl(83, 88%, 44%)",
+							16,
+							"hsl(130, 69%, 41%)",
+							20,
+							"#2ea5e5",
+							87.6,
+							"hsl(212, 81%, 44%)"
+					],
+					"line-width": [
+							"interpolate",
+							["linear"],
+							["zoom"],
+							13,
+							0.8,
+							15,
+							2.5,
+							16,
+							4,
+							20,
+							14
+					],
+					"line-opacity": 0.96
+			}
     },
     labelLayerId
     );
@@ -277,7 +291,7 @@
         'type': 'fill-extrusion',
         'minzoom': 15,
         'paint': {
-        'fill-extrusion-color': '#141c26',
+        'fill-extrusion-color': '#1f2432',
         'fill-extrusion-height': [
           'interpolate',
           ['linear'],
@@ -317,38 +331,32 @@
       var lineColor = e.features[0].layer.paint['line-color']
       var coordinates = e.lngLat;
 
-      if (lineWidth < 8) {
+			if (lineWidth < 1) {
+        var message = 'This street does not have a sidewalk.'
+        var lineColor = '#961113'
+      } else if (lineWidth >= 1 && lineWidth < 6) {
         var message = 'This path is too narrow for social distancing.'
-        var lineColor = '#d7191c'
-      } else if (lineWidth >= 8 && lineWidth < 10) {
+        var lineColor = '#bd0f0f'
+      } else if (lineWidth >= 6 && lineWidth < 9) {
         var message = 'This path is too narrow for social distancing.'
-        var lineColor = '#de873c'
-			} else if (lineWidth >= 10 && lineWidth < 12) {
+        var lineColor = '#d7760f'
+      } else if (lineWidth >= 9 && lineWidth < 12) {
         var message = 'Social distancing may be difficult on this path.'
-        var lineColor = '#bab849'
-      } else if (lineWidth >= 12 && lineWidth < 14) {
-        var message = 'Social distancing may be difficult on this path.'
-        var lineColor = '#a7ed2d'
-			} else if (lineWidth >= 14 && lineWidth < 16) {
+        var lineColor = '#e9da35'
+			} else if (lineWidth >= 12 && lineWidth < 16) {
 				var message = 'Social distancing should be possible on this path.'
-				var lineColor = '#65c334'
-			} else if (lineWidth >= 16 && lineWidth < 18) {
-				var message = 'Social distancing should be possible on this path.'
-				var lineColor = '#34e059'
-			} else if (lineWidth >= 18 && lineWidth < 20) {
+				var lineColor = '#87d30d'
+			} else if (lineWidth >= 16 && lineWidth < 20) {
 				var message = 'Social distancing should be easy on this path.'
-				var lineColor = '#03fc72'
-			} else if (lineWidth >= 22 && lineWidth < 24) {
-				var message = 'Social distancing should be easy on this path.'
-				var lineColor = '#03fcda'
+				var lineColor = '#20b138'
       } else {
         var message = 'This path is great for social distancing!'
-        var lineColor = '#03a1fc'
+        var lineColor = '#2ea5e5'
       }
 
       var description = (
         '<div class="name">Sidewalk Width:</div>' +
-        '<div class="width">' + Math.round(lineWidth * 10) / 10) + ' ft</div>' +
+				'<div class="width">' + Math.round(lineWidth * 10 * 0.3048) / 10) + ' m</div>' +
         '<div class="message">' + message + '</div>'
 
       popup.setLngLat(coordinates)
@@ -357,8 +365,19 @@
 
       popup._content.style.color = lineColor
       popup._content.style.borderColor = lineColor
-      popup._tip.style.borderTopColor = lineColor
-      popup._tip.style.borderBottomColor = lineColor
+
+			if (popup._tip.offsetParent.className.includes('mapboxgl-popup-anchor-bottom')) {
+				popup._tip.style.borderTopColor = lineColor
+			}
+			if (popup._tip.offsetParent.className.includes('mapboxgl-popup-anchor-top')) {
+	      popup._tip.style.borderBottomColor = lineColor
+			}
+			if (popup._tip.offsetParent.className.includes('mapboxgl-popup-anchor-right')) {
+				popup._tip.style.borderLeftColor = lineColor
+			}
+			if (popup._tip.offsetParent.className.includes('mapboxgl-popup-anchor-left')) {
+				popup._tip.style.borderRightColor = lineColor
+			}
 
       popup.addTo(map)
     }
