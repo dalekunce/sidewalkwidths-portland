@@ -221,6 +221,10 @@
 	map.addControl(new mapboxgl.NavigationControl());
 
   map.on('load', function() {
+
+		map.moveLayer('turning-feature', 'road-label');
+		map.moveLayer('turning-feature-outline', 'road-label');
+
     // Insert the layer beneath any symbol layer.
     var layers = map.getStyle().layers;
 
