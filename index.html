@@ -289,29 +289,29 @@
         'source-layer': 'building',
         'filter': ['==', 'extrude', 'true'],
         'type': 'fill-extrusion',
-        'minzoom': 15,
+        'minzoom': 16,
         'paint': {
         'fill-extrusion-color': '#1f2432',
         'fill-extrusion-height': [
           'interpolate',
           ['linear'],
           ['zoom'],
-          15, 0,
-          15.05, ['get', 'height']
+          16, 0,
+          16.05, ['get', 'height']
         ],
         'fill-extrusion-base': [
           'interpolate',
           ['linear'],
           ['zoom'],
-          15, 0,
-          15.05, ['get', 'min_height']
+          16, 0,
+          16.05, ['get', 'min_height']
         ],
         'fill-extrusion-opacity': [
           'interpolate',
           ['linear'],
           ['zoom'],
-          15, 0,
-          16, 0.95
+          16, 0,
+          17, 0.95
         ]
       }
     },
