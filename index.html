@@ -222,20 +222,6 @@
 
   map.on('load', function() {
 
-		map.moveLayer('turning-feature', 'road-label');
-		map.moveLayer('turning-feature-outline', 'road-label');
-
-    // Insert the layer beneath any symbol layer.
-    var layers = map.getStyle().layers;
-
-    var labelLayerId;
-    for (var i = 0; i < layers.length; i++) {
-      if (layers[i].type === 'symbol') {
-        labelLayerId = layers[i].id;
-        break;
-      }
-    }
-
 		map.addSource('sidewalks', {
 			 type: 'vector',
 			 url: 'mapbox://transportpartnership.avtbz3wy'
@@ -283,7 +269,7 @@
 					"line-opacity": 0.96
 			}
     },
-    labelLayerId
+    'road-label'
     );
 
     map.addLayer(
@@ -319,7 +305,7 @@
         ]
       }
     },
-    labelLayerId
+    'road-label'
     );
 
     var popup = new mapboxgl.Popup({
