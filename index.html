@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Sidewalk Widths Toronto</title>
+<title>Sidewalk Widths Oakland</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <link rel='icon' href='favicon.ico?' type='image/x-icon'/ >
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
@@ -161,16 +161,14 @@
   <div id="info">
     <div id="info-content">
       <h3>Welcome to</h3>
-      <h1>Sidewalk Widths Toronto</h1>
-			<p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Widths were determined from the <a href="https://open.toronto.ca/dataset/topographic-mapping-physical-area-of-sidewalks/">City of Toronto's open sidewalk data</a>. This source data was not verfied for accuracy or completeness. The sidewalk data also does not include off-street trails and multi-use paths, which may offer additional routes for pedestrians.</p>
-			<p>This site borrows <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">methods and code</a> from Meli Harvey's <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC project</a>, adapted to Toronto's context. To learn more about how this dataset was produced, visit the <a href="https://github.com/sharedstreets/sidewalkwidths-toronto">Sidewalk Widths Toronto GitHub page</a>.</p>
-
-			<!-- <p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Sidewalk width information was provided by the <a href="https://www.oaklandca.gov/topics/sidewalks">City of Oakland</a>, using its most recent (2006) sidewalk inventory. This source data was not verfied for accuracy or completeness. This map is based on <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc"></a>Meli Harvey's <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC project</a> and associated <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">source code.</a></p> -->
-			<!-- <p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Widths were determined from the <a href="https://data.drcog.org/dataset/sidewalk-polygons-2018">Denver Regional Council of Government (DRCOG)'s 2018 Regional Planimetric Data Project</a>. This source data was not verfied for accuracy or completeness. This site borrows <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">methods and code</a> from Meli Harvey's <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC project</a></p>
-			<p>To learn more about how this dataset was produced, visit the <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p> -->
-			<p></p>
-      <p><small>DISCLAIMER<br>
-      Do not use this map to make decisions that impact your health or safety. Other important factors like sidewalk obstructions, population density, and pedestrian activity are not accounted for in this dataset. Dense areas often have wide sidewalks, but could be too crowded to keep a safe distance. Less populated areas will almost certainly have narrower sidewalks, but it may be easy to keep a safe distance. Local knowledge and other information are critical for making decisions about using and managing city streets.
+      <h1>Sidewalk Widths Oakland</h1>
+			<p>This map is intended to give an overall impression of how sidewalk widths impact the ability of pedestrians to practice social distancing, and how the <a href="https://www.oaklandca.gov/projects/oakland-slow-streets">Oakland Slow Streets</a> program affects this.</p>
+			<br/>
+      <p><small>DATA SOURCES AND DISCLAIMER<br/>
+			<p>This map uses best-available city datasets but has important limitations. Slow Streets locations were obtained from the <a href="https://www.arcgis.com/home/webmap/viewer.html?webmap=b2f8989fdb514d2fb511067a11ad65f0&extent=-122.2964,37.7837,-122.1887,37.8461">City of Oakland's online map viewer</a> and are accurate as of April 27. Widths were taken from Oakland's most recent sidewalk inventory in 2006, provided by city staff. This source data is somewhat dated, doesn't account for variation along each blockface, and was not verfied for accuracy or completeness.
+			<br/><br/>
+      Do not use this map to make decisions that impact your health or safety. Other important factors like sidewalk obstructions, population density, and pedestrian activity are not accounted for in this dataset. Local knowledge and other information are critical for making decisions about using and managing city streets.</p>
+			<p>This map was inspired by <a href="http://www.sidewalkwidths.nyc/">Sidewalk Widths NYC</a>.
 		</small></p>
     </div>
     <div id="info-button" onclick="closeInfo()">
@@ -208,13 +206,13 @@
   var map = new mapboxgl.Map({
     container: 'map',
 		style: 'mapbox://styles/transportpartnership/ck9eobamu2ojb1io1yppz1uhn',
-		center: [-79.3808, 43.6493],
-    zoom: 16,
+		center: [-122.26877, 37.80302],
+    zoom: 13.7,
   	maxZoom: 22,
   	minZoom: 12,
 		maxBounds: [
-			[-79.689, 43.451], // Southwest coordinates
-			[-79.089, 43.851] // Northeast coordinates
+			[-122.325, 37.719], // Southwest coordinates
+			[-122.127, 37.874] // Northeast coordinates
 		],
 		hash: true
   });
@@ -235,21 +233,23 @@
 
 		map.addSource('sidewalks', {
 			 type: 'vector',
-			 url: 'mapbox://transportpartnership.avtbz3wy'
+			 url: 'mapbox://transportpartnership.dbc0nb2g'
 		});
 
     map.addLayer({
       'id': 'sidewalks',
       'type': 'line',
       'source': 'sidewalks',
-			'source-layer': 'sidewalkwidths_toronto-cthez3',
+			'source-layer': 'slowstreets-oakland-dr9m5x',
+			'minzoom': 12,
       'layout': {
         'line-cap': 'round',
+				'line-join': 'round'
       },
 			"paint": {
 					"line-color": [
 							"step",
-							["get", "width"],
+							["get", "width_base"],
 							"hsl(0, 85%, 40%)",
 							6,
 							"hsl(31, 87%, 45%)",
@@ -282,6 +282,48 @@
     },
     labelLayerId
     );
+
+		map.addSource('slowstreets', {
+			 type: 'vector',
+			 url: 'mapbox://transportpartnership.dcvlk96s'
+		});
+
+		map.addLayer({
+      'id': 'slowstreets',
+      'type': 'line',
+      'source': 'slowstreets',
+			'source-layer': 'slowstreets-oakland-0w4en5',
+      'layout': {
+        'line-cap': 'round',
+      },
+			"paint": {
+					"line-color": [
+							"match",
+							["get", "Impl_1"],
+							["17-Apr", "11-Apr"],
+							"hsla(186, 92%, 50%, 0.9)",
+							"hsla(186, 92%, 50%, 0.45)"
+					],
+					"line-width": [
+							"interpolate",
+							["linear"],
+							["zoom"],
+							13,
+							3.5,
+							15,
+							4.8,
+							16,
+							7,
+							18,
+							14,
+							20,
+							24
+					]
+			}
+	},
+    'road-label'
+    );
+
 
     map.addLayer(
       {
@@ -328,13 +370,17 @@
 
       map.getCanvas().style.cursor = 'pointer';
 
-      var lineWidth = e.features[0].properties.width
+      var lineWidth = e.features[0].properties.width_base
+			var slowStatus = e.features[0].properties.slowstreet
       var lineColor = e.features[0].layer.paint['line-color']
       var coordinates = e.lngLat;
 
-			if (lineWidth < 1) {
-        var message = 'This street does not have a sidewalk.'
-        var lineColor = '#961113'
+			if (slowStatus == 1) {
+        var message = 'However, this street is part of Slow Streets. It should be great for social distancing!'
+        var lineColor = '#0addf5'
+			} else if (lineWidth < 1) {
+	        var message = 'This street does not have a sidewalk.'
+	        var lineColor = '#961113'
       } else if (lineWidth >= 1 && lineWidth < 6) {
         var message = 'This path is too narrow for social distancing.'
         var lineColor = '#bd0f0f'
@@ -355,9 +401,13 @@
         var lineColor = '#2ea5e5'
       }
 
+			if (slowStatus == 2) {
+				var message = message + ' However, this street is being considered for Slow Streets. If added, it should be great for social distancing.'
+			}
+
       var description = (
         '<div class="name">Sidewalk Width:</div>' +
-				'<div class="width">' + Math.round(lineWidth * 10 * 0.3048) / 10) + ' m</div>' +
+				'<div class="width">' + Math.round(lineWidth * 10) / 10) + ' ft</div>' +
         '<div class="message">' + message + '</div>'
 
       popup.setLngLat(coordinates)
